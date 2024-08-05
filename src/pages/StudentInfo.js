@@ -8,6 +8,7 @@ import axios from "axios";
 import config from "../config";
 import { ToastContainer, toast } from "react-toastify";
 import { LiaFileContractSolid } from "react-icons/lia";
+import TableJobs from "./tableJobs";
 
 function StudentInfo() {
   const [studentData, setStudentData] = useState({});
@@ -120,7 +121,7 @@ function StudentInfo() {
                 <h2 className="mt-6 mb-4 text-lg font-semibold">
                   Thông tin sinh viên
                 </h2>
-                {personForm == 1 ? (
+                {personForm === 1 ? (
                   <ParentForm studentData={studentData} />
                 ) : (
                   <GuardianForm studentData={studentData} />
@@ -160,7 +161,8 @@ function StudentInfo() {
                 </ul>
               </div>
 
-              <div className="w-full mx-auto px-5 mb-5">
+              <TableJobs />
+              {/* <div className="w-full mx-auto px-5 mb-5">
                 <h2 className="mt-6 mb-4 text-lg font-semibold">
                   Thông tin khoản vay
                 </h2>
@@ -220,7 +222,7 @@ function StudentInfo() {
                     </tbody>
                   </table>
                 </div>
-              </div>
+              </div> */}
             </>
           )}
         </div>

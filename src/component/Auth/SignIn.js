@@ -55,8 +55,6 @@ function SignIn({ setIsShowSignInBox }) {
     }
   };
 
-  console.log(">>>> check bannerData", bannerData);
-
   const handleSubmit = async (values) => {
     if (value === 1) {
       try {
@@ -67,7 +65,7 @@ function SignIn({ setIsShowSignInBox }) {
 
         console.log(res);
 
-        if (res.data.status == true) {
+        if (res.data.status === true) {
           localStorage.setItem("membervtnk", res.data.token);
           localStorage.setItem("memberName", res.data.admin.username);
           navigate("/");
