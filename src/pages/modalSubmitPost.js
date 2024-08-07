@@ -1,18 +1,65 @@
 import React, { memo } from "react";
-import { Button, DatePicker, Form, Input, message, Modal } from "antd";
-import dayjs from "dayjs";
+import { Button, Form, Input, Modal } from "antd";
+import axios from "axios";
+import config from "../config";
+import { toast } from "react-toastify";
 
-function ModalSubmitPost({ handleOpenModal, open }) {
+function ModalSubmitPost({ handleOpenModal, open, fetchDataJob }) {
   const [form] = Form.useForm();
-  const onFinish = () => {
-    message.success("Submit success!");
+  const onFinish = async (values) => {
+    try {
+      let headers = {
+        "Content-Type": "application/json",
+      };
+      const token = localStorage.getItem("studentvtnk");
+
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
+
+      const res = await axios.post(
+        config.host + `/update-task/${open.idTask}`,
+        { title: values.titlePost, link: values.url },
+        { headers: headers }
+      );
+      if (res.data.status === true) {
+        toast.success(`Đăng bài ${values.titlePost} thành công.`, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        fetchDataJob();
+        handleOpenModal("openModalPost", false, null);
+        form.resetFields();
+      }
+
+      console.log("res.data res.data", res.data);
+    } catch (error) {
+      console.error("fetch data to fail.");
+
+      toast.error(`Đăng bài ${values.titlePost} thất bại.`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      form.resetFields();
+    }
   };
+
   return (
     <Modal
       open={open.openModalPost}
       title="Đăng bài"
-      onOk={() => handleOpenModal("openModalPost", true)}
-      onCancel={() => handleOpenModal("openModalPost", false)}
+      onOk={() => handleOpenModal("openModalPost", true, null)}
+      onCancel={() => handleOpenModal("openModalPost", false, null)}
       footer={null}
     >
       <Form
@@ -57,16 +104,8 @@ function ModalSubmitPost({ handleOpenModal, open }) {
           <Input placeholder="input placeholder" />
         </Form.Item>
 
-        <Form.Item name="dayPost" label="Ngày đăng bài ">
-          <DatePicker
-            format="DD/MM/YYYY HH:mm:ss"
-            defaultValue={dayjs()}
-            disabled={true}
-          />
-        </Form.Item>
-
         <Form.Item>
-          <Button htmlType="submit">Submit</Button>
+          <Button htmlType="submit">Đăng bài</Button>
         </Form.Item>
       </Form>
     </Modal>

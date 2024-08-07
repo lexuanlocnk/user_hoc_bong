@@ -148,3 +148,26 @@ body,
   font-size: 13px;
   color: #52c41a;
 }
+
+
+.btn_delete_post {
+  cursor: pointer;
+
+  font-weight: 500;
+  font-size: 13px;
+  color: rgb(248, 34, 34);
+}
+
+.box_description_task {
+  max-height: 200px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.box_action {
+  display: flex;
+  flex-direction: column;
+}
