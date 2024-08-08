@@ -1,4 +1,5 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import {
   Navigation,
@@ -8,14 +9,12 @@ import {
   Autoplay,
 } from "swiper/modules";
 
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-import { useCurrentViewport } from "../hooks/useCurrentViewport";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import config from "../config";
-import { Link } from "react-router-dom";
 
 const implementationProgress = [
   {

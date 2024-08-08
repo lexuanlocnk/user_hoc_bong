@@ -31,6 +31,7 @@ function App() {
     <>
       <ScrollToTop />
       <ScrollUpButton />
+
       {/* START HEADER FOR MOBILE */}
       <header className="fixed top-0 left-0 bottom-0 right-0 z-10 w-full h-full max-h-14 flex items-center justify-between px-5 bg-primary lg:hidden">
         <Link>
@@ -48,10 +49,14 @@ function App() {
         </button>
       </header>
       {/* END HEADER FOR MOBILE */}
+
+      {/* Sidebar when clicked */}
       <Sidebar
         isSidebarActive={isSidebarActive}
         onCloseSidebar={() => setIsSidebarActive(false)}
       />
+      {/* Sidebar when clicked */}
+
       <Routes>
         <Route index element={<AboutUs />} />
         <Route path="tin-tuc" element={<News />} />

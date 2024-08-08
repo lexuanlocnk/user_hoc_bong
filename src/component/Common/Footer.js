@@ -161,11 +161,11 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div>
-          <div>
+        <div className="w-full">
+          <div className="w-full">
             <iframe
               src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fvitinhnguyenkim%3Fref%3Dembed_page&tabs=timeline&width=340&height=70&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
-              width="340"
+              width="100%"
               height="150"
               style={{ border: "none", overflow: "hidden" }}
               loading="lazy"
