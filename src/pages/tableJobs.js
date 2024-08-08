@@ -180,6 +180,7 @@ function TableJobs() {
     <div className="px-5">
       <h2 className="mt-6 mb-4 text-lg font-semibold">Danh sách công việc</h2>
       <Table
+        scroll={{ x: true }}
         pagination={{
           pageSize: 10,
           onChange: (page, pageSize) => {

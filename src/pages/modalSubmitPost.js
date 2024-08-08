@@ -78,7 +78,7 @@ function ModalSubmitPost({ handleOpenModal, open, fetchDataJob }) {
             },
           ]}
         >
-          <Input placeholder="input placeholder" />
+          <Input placeholder="Tiêu đề bài viết" />
         </Form.Item>
 
         <Form.Item
@@ -101,7 +101,7 @@ function ModalSubmitPost({ handleOpenModal, open, fetchDataJob }) {
             },
           ]}
         >
-          <Input placeholder="input placeholder" />
+          <Input placeholder="URL bài viết" />
         </Form.Item>
 
         <Form.Item>

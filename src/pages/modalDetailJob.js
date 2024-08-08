@@ -107,6 +107,7 @@ function ModalDetailJob({
     >
       <div>
         <Table
+          scroll={{ x: "max-content" }}
           loading={loading}
           dataSource={dataListJob?.listLink || []}
           columns={columns}
