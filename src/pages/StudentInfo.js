@@ -44,7 +44,7 @@ function StudentInfo() {
       setContractData(res.data.dataContract);
       setPassword(res.data.student.password);
       setPersonForm(res.data.student.dependent_person);
-      setStudentLoanData(res.data.list.data);
+      setStudentLoanData(res.data.list);
       setIsLoading(false);
     } catch (error) {
       console.error("fetch data fail.");
@@ -110,7 +110,7 @@ function StudentInfo() {
             </div>
           )}
           <h1 className="text-center mt-20 md:mt-10 text-2xl md:text-3xl uppercase font-semibold">
-            Thông tin sinh viên, khoản vay
+            Thông tin sinh viên nhận học bổng
           </h1>
           {!isLoading && (
             <>
@@ -126,6 +126,9 @@ function StudentInfo() {
                 ) : (
                   <GuardianForm studentData={studentData} />
                 )}
+                <h2 className="mt-6 mb-4 text-lg font-semibold">
+                  Thông tin sinh viên
+                </h2>
                 <StudentInfoForm
                   studentData={studentData}
                   password={password}
@@ -135,7 +138,8 @@ function StudentInfo() {
 
               <div className="px-5">
                 <h2 className="mt-6 mb-4 text-lg font-semibold">
-                  Danh sách hợp đồng đã ký
+                  Danh sách hợp đồng đã ký (*nhấn vào link bên dưới để xem chi
+                  tiết bản scan hợp đồng)
                 </h2>
                 <ul>
                   {contractData?.length > 0 ? (
@@ -161,23 +165,20 @@ function StudentInfo() {
                 </ul>
               </div>
 
-              <TableJobs />
-              {/* <div className="w-full mx-auto px-5 mb-5">
+              <div className="w-full mx-auto px-5 mb-5">
                 <h2 className="mt-6 mb-4 text-lg font-semibold">
-                  Thông tin khoản vay
+                  Thông tin nhận học bổng
                 </h2>
                 <div className="overflow-x-auto">
                   <table className="w-full bg-white border border-gray-300 mx-auto">
                     <thead className="bg-gray-600 text-white border border-gray-600">
                       <tr>
                         <th className="py-2 px-4 border-b">STT</th>
-                        <th className="py-2 px-4 border-b">Tên sinh viên</th>
                         <th className="py-2 px-4 border-b">Mã phiếu thu</th>
-                        <th className="py-2 px-4 border-b">Số tiền đã vay</th>
-                        <th className="py-2 px-4 border-b">Số tiền đã trả</th>
-                        <th className="py-2 px-4 border-b">Ngày trả</th>
+                        <th className="py-2 px-4 border-b">Số tiền đã nhận</th>
+                        <th className="py-2 px-4 border-b">Ngày tạo phiếu</th>
                         <th className="py-2 px-4 border-b">
-                          Link file PDF phiếu thu
+                          Bản scan PDF phiếu thu
                         </th>
                       </tr>
                     </thead>
@@ -189,21 +190,19 @@ function StudentInfo() {
                             <td className="py-2 px-4 border-b text-center">
                               {index + 1}
                             </td>
-                            <td className="py-2 px-4 border-b text-center">
-                              {row.nameMember}
-                            </td>
+
                             <td className="py-2 px-4 border-b text-center">
                               {row.code}
                             </td>
-                            <td className="py-2 px-4 border-b text-center">
-                              {currencyFormat(row.loan)}
-                            </td>
+
                             <td className="py-2 px-4 border-b text-center">
                               {currencyFormat(row.moneyPaid)}
                             </td>
+
                             <td className="py-2 px-4 border-b text-center">
                               {row.dates}
                             </td>
+
                             <td className="py-2 px-4 border-b text-center ">
                               <div className="max-w-[150px] overflow-hidden whitespace-nowrap overflow-ellipsis">
                                 <a
@@ -222,7 +221,9 @@ function StudentInfo() {
                     </tbody>
                   </table>
                 </div>
-              </div> */}
+              </div>
+
+              <TableJobs />
             </>
           )}
         </div>

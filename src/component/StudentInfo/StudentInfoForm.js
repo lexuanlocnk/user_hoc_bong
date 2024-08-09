@@ -227,6 +227,9 @@ function StudentInfoForm({ studentData, password, setPassword }) {
           readOnly
         />
       </div>
+      <h2 className="mt-6 mb-4 text-lg font-semibold">
+        Thông tin người giới thiệu
+      </h2>
 
       {/* <div className="mb-4">
 				<label className="block text-gray-700 text-base font-bold mb-2" htmlFor="studentRecommendation">

@@ -114,9 +114,7 @@ function ContributorInfo() {
           <div className="container mx-auto max-w-[1000px] bg-white rounded-md">
             <h1 className="text-center mt-20 md:mt-10 text-2xl md:text-3xl uppercase font-semibold">
               {`Thông tin ${
-                contributeData
-                  ? "mạnh thường quân, khoản góp"
-                  : "người giới thiệu"
+                contributeData ? "mạnh thường quân góp quỹ" : "người giới thiệu"
               }`}{" "}
             </h1>
             <form
@@ -187,7 +185,7 @@ function ContributorInfo() {
                       <th className="py-2 px-4 border-b">Số tiền góp</th>
                       <th className="py-2 px-4 border-b">Ngày góp</th>
                       <th className="py-2 px-4 border-b">
-                        Link file PDF phiếu thu
+                        Bản scan PDF phiếu thu
                       </th>
                     </tr>
                   </thead>
@@ -268,7 +266,9 @@ function ContributorInfo() {
                             {row.dateBirthMember}
                           </td>
                           <td className="py-2 px-4 border-b text-center">
-                            {row.addressMember}
+                            <div className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+                              {row.addressMember}
+                            </div>
                           </td>
                           <td className="py-2 px-4 border-b text-center">
                             {row.emailMember}
