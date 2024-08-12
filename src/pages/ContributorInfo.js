@@ -5,6 +5,7 @@ import config from "../config";
 import { ToastContainer, toast } from "react-toastify";
 import { LiaFileContractSolid } from "react-icons/lia";
 import { Link } from "react-router-dom";
+import dayjs from "dayjs";
 
 function ContributorInfo() {
   const [contributeData, setContributeData] = useState({});
@@ -38,7 +39,7 @@ function ContributorInfo() {
       setContractData(res.data.dataContract);
       setMemberMoney(res.data.listMoney.data);
       seStudentRecommend(res.data.listMember.data);
-      setPassword(res.data.member.password);
+      // setPassword(res.data.member.password);
       setIsLoading(false);
     } catch (error) {
       console.error("fetch data fail.");
@@ -47,6 +48,18 @@ function ContributorInfo() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!password) {
+      toast.warning(`Vui lòng nhập mật khẩu!`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
     try {
       let headers = {
         "Content-Type": "application/json",
@@ -112,17 +125,15 @@ function ContributorInfo() {
       {!isLoading && (
         <section className="bg-[#f0f0f0] flex justify-center py-5">
           <div className="container mx-auto max-w-[1000px] bg-white rounded-md">
-            <h1 className="text-center mt-20 md:mt-10 text-2xl md:text-3xl uppercase font-semibold">
-              {`Thông tin ${
-                contributeData ? "mạnh thường quân góp quỹ" : "người giới thiệu"
-              }`}{" "}
+            <h1 className="text-center mt-20 md:mt-10 text-2xl md:text-3xl font-semibold">
+              {`Thông tin mạnh thường quân/ người giới thiệu`}{" "}
             </h1>
             <form
               onSubmit={handleSubmit}
               className="md:max-w-[800px] mx-auto pt-[32px] px-4"
             >
               <h2 className="mt-6 mb-4 text-lg font-semibold">
-                Thông tin mạnh thường quân
+                Thông tin mạnh thường quân/ người giới thiệu
               </h2>
               <ContributorInfoForm
                 data={contributeData}
@@ -133,7 +144,7 @@ function ContributorInfo() {
 
             <div className="px-5">
               <h2 className="mt-6 mb-4 text-lg font-semibold">
-                Danh sách hợp đồng đã ký
+                Danh sách hồ sơ góp quỹ
               </h2>
               <ul>
                 {contractData?.length > 0 ? (
@@ -158,7 +169,7 @@ function ContributorInfo() {
 
             <div className="px-5">
               <h2 className="mt-6 mb-4 text-lg font-semibold">
-                Thông tin khoản góp
+                Thông tin khoản góp quỹ
               </h2>
               <div className="flex md:justify-end">
                 <div className="mb-4 text-base font-semibold">
@@ -178,11 +189,11 @@ function ContributorInfo() {
                   <thead className="bg-gray-600 text-white border border-gray-600">
                     <tr>
                       <th className="py-2 px-4 border-b">STT</th>
-                      <th className="py-2 px-4 border-b">
+                      {/* <th className="py-2 px-4 border-b">
                         Tên mạnh thường quân
-                      </th>
+                      </th> */}
                       <th className="py-2 px-4 border-b">Mã phiếu thu</th>
-                      <th className="py-2 px-4 border-b">Số tiền góp</th>
+                      <th className="py-2 px-4 border-b">Số tiền góp quỹ</th>
                       <th className="py-2 px-4 border-b">Ngày góp</th>
                       <th className="py-2 px-4 border-b">
                         Bản scan PDF phiếu thu
@@ -197,9 +208,9 @@ function ContributorInfo() {
                           <td className="py-2 px-4 border-b text-center">
                             {index + 1}
                           </td>
-                          <td className="py-2 px-4 border-b text-center">
+                          {/* <td className="py-2 px-4 border-b text-center">
                             {row.username}
-                          </td>
+                          </td> */}
 
                           <td className="py-2 px-4 border-b text-center">
                             {row.code}
@@ -209,7 +220,9 @@ function ContributorInfo() {
                             {currencyFormat(row.fundMoneyReal)}
                           </td>
                           <td className="py-2 px-4 border-b text-center">
-                            {row.dates}
+                            {dayjs(row.dates, "YYYY-MM-DD HH:mm:ss").format(
+                              "DD/MM/YYYY hh:mm:ss A"
+                            )}
                           </td>
                           <td className="py-2 px-4 border-b text-center ">
                             <div className="max-w-[150px] overflow-hidden whitespace-nowrap overflow-ellipsis">
@@ -229,9 +242,9 @@ function ContributorInfo() {
               </div>
             </div>
 
-            <div className="w-full h-full px-5 mb-5">
+            <div className="w-full px-5 mb-5">
               <h2 className="mt-6 mb-4 text-lg font-semibold">
-                Thông tin người giới thiệu
+                Thông tin người được giới thiệu nhận học bổng
               </h2>
               <div className="overflow-x-auto">
                 <table className="w-full bg-white border border-gray-300 ">
@@ -263,8 +276,12 @@ function ContributorInfo() {
                             {row.nameMember}
                           </td>
                           <td className="py-2 px-4 border-b text-center">
-                            {row.dateBirthMember}
+                            {dayjs(
+                              row.dateBirthMember,
+                              "YYYY-MM-DD HH:mm:ss"
+                            ).format("DD/MM/YYYY A")}
                           </td>
+
                           <td className="py-2 px-4 border-b text-center">
                             <div className="overflow-hidden whitespace-nowrap overflow-ellipsis">
                               {row.addressMember}

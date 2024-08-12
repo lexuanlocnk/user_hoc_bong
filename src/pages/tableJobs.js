@@ -155,11 +155,10 @@ function TableJobs() {
     dataJob && dataJob?.data && dataJob?.data?.length > 0
       ? dataJob?.data?.map((item, index) => ({
           idTask: item.taskId,
-          key: index, // Sử dụng key từ item hoặc chỉ số nếu không có key
-          // stt: index + 1, // Sử dụng stt từ item hoặc chỉ số + 1 nếu không có stt
+          key: index,
           nameJob: item.title,
           deadline: dayjs.unix(item.endDate).format("DD/MM/YYYY"),
-          statusJob: item.status === 0 ? "Chưa hoàn thành" : "Đã Hoàn thành",
+          statusJob: item.status === 0 ? "Chưa hoàn thành" : "Đã hoàn thành",
           descriptionJob: (
             <Popover
               content={

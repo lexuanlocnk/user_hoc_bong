@@ -26,11 +26,12 @@ function ActionNewsDetail() {
 
   return (
     <>
-      <section className='mt-[54px] w-full h-full p-5 bg-[#f0f0f0]'>
+      <section className="mt-[54px] w-full h-full p-5 bg-[#f0f0f0]">
         <div className="container mx-auto max-w-[1100px] rounded-md bg-white py-3 px-4">
           <div className="mb-4">
             {/* <Breadcrumb arrayLink={breadcrumbLink} /> */}
-            <Breadcrumb className="text-base breadcrum-custom"
+            <Breadcrumb
+              className="text-base breadcrum-custom"
               items={[
                 {
                   title: <Link to="/">Trang chủ</Link>,
@@ -51,12 +52,13 @@ function ActionNewsDetail() {
               </div>
             ) : (
               <div>
-                <h2 className="text-xl text-center font-bold text-blue-500">{newsData.title}</h2>
+                <h2 className="text-xl text-center font-bold text-blue-500">
+                  {newsData.title}
+                </h2>
                 <div className="">
                   <div
                     dangerouslySetInnerHTML={{ __html: newsData.description }}
-                  >
-                  </div>
+                  ></div>
                 </div>
               </div>
             )}
@@ -64,7 +66,6 @@ function ActionNewsDetail() {
         </div>
       </section>
     </>
-
   );
 }
 

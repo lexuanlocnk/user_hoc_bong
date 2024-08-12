@@ -56,14 +56,14 @@ function ActionNews() {
                   <div className="w-[30%] md:w-full md:h-48  relative overflow-hidden">
                     <LazyLoadImage
                       src={`${config.img}/${item.picture}`}
-                      alt={`tin tuc ${item.id}`}
+                      alt={`hoat dong ${item.id}`}
                       className="object-cover w-full h-full absolute inset-0 rounded-tl rounded-bl md:rounded-tl md:rounded-tr md:rounded-bl-none"
                     />
                   </div>
 
                   <div className="flex-1 flex flex-col items-center gap-2 justify-center p-2">
                     <Link
-                      to={`/tin-tuc/${item.friendly_title}`}
+                      to={`/hoat-dong/${item.friendly_title}`}
                       className="text-base font-semibold leading-normal hover:text-blue-500 transition duration-300 tw-multiline-ellipsis-2"
                     >
                       {item.title}

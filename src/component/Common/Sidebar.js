@@ -38,7 +38,7 @@ function Sidebar({ isSidebarActive, onCloseSidebar }) {
   return (
     <>
       <nav
-        className={`fixed z-30 h-screen top-0 pt-6 pl-6 sm:pt-8 sm:pl-8 md:pt-10 md:pl-10 w-[70vw] shrink-0 shadow-md bg-primary -translate-x-full transition duration-300  lg:sticky lg:flex lg:justify-center lg:w-full lg:max-h-[80px] lg:p-0 lg:top-0 lg:translate-x-0 lg:shadow-none lg:px-3 ${
+        className={`fixed z-30 h-screen top-0 pt-6 pl-6 sm:pt-8 sm:pl-8 md:pt-10 md:pl-10 w-[70vw] shrink-0 shadow-md bg-primary -translate-x-full transition duration-300  lg:sticky lg:flex lg:justify-center lg:w-full lg:max-h-16 lg:p-0 lg:top-0 lg:translate-x-0 lg:shadow-none lg:px-3 ${
           isSidebarActive && "translate-x-0"
         }`}
       >
@@ -50,10 +50,10 @@ function Sidebar({ isSidebarActive, onCloseSidebar }) {
         </button>
 
         <div
-          className={`flex flex-col lg:flex-row justify-center lg:items-center lg:justify-between lg:w-full text-[18px] bg-primary font-medium uppercase px-2 sm:px-5`}
+          className={`flex flex-col lg:flex-row justify-center lg:items-center lg:justify-between lg:w-full text-lg bg-primary font-medium  px-2 sm:px-5`}
         >
           <Link to={"/"}>
-            <div className="w-[120px] h-[50px] relative top-[12%] hidden lg:inline-block">
+            <div className="w-24 h-10 relative  hidden lg:inline-block">
               <LazyLoadImage
                 src={Logo}
                 alt="logo Nguyen Kim"
@@ -200,7 +200,7 @@ function Sidebar({ isSidebarActive, onCloseSidebar }) {
                       "border-b-4 border-white text-white font-medium"
                     }`}
                   >
-                    thông tin góp
+                    Thông tin góp quỹ
                   </p>
                 </Link>
               </li>
@@ -218,7 +218,7 @@ function Sidebar({ isSidebarActive, onCloseSidebar }) {
                       "border-b-4 border-white text-white font-medium"
                     }`}
                   >
-                    thông tin vay
+                    Thông tin học bổng
                   </p>
                 </Link>
               </li>
@@ -261,7 +261,7 @@ function Sidebar({ isSidebarActive, onCloseSidebar }) {
                   <div className="absolute top-[-10px] left-0 w-full h-[20px] bg-transparent "></div>
                   <li
                     onClick={handleLogout}
-                    className="block px-4 py-2 hover:bg-yellow-200 rounded-lg"
+                    className="block px-3 py-2 hover:bg-yellow-200 text-base rounded-lg whitespace-nowrap"
                   >
                     <p className="cursor-pointer">Đăng xuất</p>
                   </li>
@@ -293,7 +293,7 @@ function Sidebar({ isSidebarActive, onCloseSidebar }) {
                   </p>
                 </div>
                 <ul
-                  className={`absolute max-w-md bg-white text-black shadow-lg rounded-lg mt-2 transition-opacity duration-300 ${
+                  className={`absolute w-max max-w-md bg-white text-black shadow-lg rounded-lg mt-2 transition-opacity duration-300 ${
                     dropdownOpen
                       ? "opacity-100"
                       : "opacity-0 pointer-events-none"
@@ -304,7 +304,7 @@ function Sidebar({ isSidebarActive, onCloseSidebar }) {
                   <div className="absolute top-[-10px] left-0 w-full h-[20px] bg-transparent "></div>
                   <li
                     onClick={handleLogout}
-                    className="block px-4 py-2 hover:bg-yellow-200 rounded-lg"
+                    className="block px-3 py-2 hover:bg-yellow-200 text-base rounded-lg whitespace-nowrap"
                   >
                     <p className="cursor-pointer">Đăng xuất</p>
                   </li>

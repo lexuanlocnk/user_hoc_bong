@@ -4,7 +4,7 @@ import config from "../../config";
 import { ToastContainer, toast } from "react-toastify";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
-function StudentInfoForm({ studentData, password, setPassword }) {
+function StudentInfoForm({ studentData, referrerData, password, setPassword }) {
   const [isShowPassword, setIsShowPassword] = useState(false);
 
   return (
@@ -12,7 +12,7 @@ function StudentInfoForm({ studentData, password, setPassword }) {
       <ToastContainer />
       <div className="mb-4">
         <label
-          className="block text-gray-700 text-base font-bold mb-2"
+          className="block text-gray-700 text-base font-semibold mb-2"
           htmlFor="studentName"
         >
           Họ tên sinh viên
@@ -29,7 +29,7 @@ function StudentInfoForm({ studentData, password, setPassword }) {
 
       <div className="mb-4">
         <label
-          className="block text-gray-700 text-base font-bold mb-2"
+          className="block text-gray-700 text-base font-semibold mb-2"
           htmlFor="email"
         >
           Mật khẩu (bạn có thể thay đổi thông tin này)
@@ -62,7 +62,7 @@ function StudentInfoForm({ studentData, password, setPassword }) {
 
       <div className="mb-4">
         <label
-          className="block text-gray-700 text-base font-bold mb-2"
+          className="block text-gray-700 text-base font-semibold mb-2"
           htmlFor="studentDob"
         >
           Ngày tháng năm sinh
@@ -78,7 +78,7 @@ function StudentInfoForm({ studentData, password, setPassword }) {
       </div>
       <div className="mb-4">
         <label
-          className="block text-gray-700 text-base font-bold mb-2"
+          className="block text-gray-700 text-base font-semibold mb-2"
           htmlFor="studentAddress"
         >
           Địa chỉ thường trú
@@ -95,7 +95,7 @@ function StudentInfoForm({ studentData, password, setPassword }) {
 
       <div className="mb-4">
         <label
-          className="block text-gray-700 text-base font-bold mb-2"
+          className="block text-gray-700 text-base font-semibold mb-2"
           htmlFor="studentTemporaryAddress"
         >
           Địa chỉ tạm trú
@@ -112,7 +112,7 @@ function StudentInfoForm({ studentData, password, setPassword }) {
 
       <div className="mb-4">
         <label
-          className="block text-gray-700 text-base font-bold mb-2"
+          className="block text-gray-700 text-base font-semibold mb-2"
           htmlFor="studentTel"
         >
           Số điện thoại
@@ -128,7 +128,7 @@ function StudentInfoForm({ studentData, password, setPassword }) {
       </div>
       <div className="mb-4">
         <label
-          className="block text-gray-700 text-base font-bold mb-2"
+          className="block text-gray-700 text-base font-semibold mb-2"
           htmlFor="studentIdCard"
         >
           Số CCCD/ CMND
@@ -145,7 +145,7 @@ function StudentInfoForm({ studentData, password, setPassword }) {
 
       <div className="mb-4">
         <label
-          className="block text-gray-700 text-base font-bold mb-2"
+          className="block text-gray-700 text-base font-semibold mb-2"
           htmlFor="studentEmail"
         >
           Email
@@ -162,7 +162,7 @@ function StudentInfoForm({ studentData, password, setPassword }) {
 
       <div className="mb-4">
         <label
-          className="block text-gray-700 text-base font-bold mb-2"
+          className="block text-gray-700 text-base font-semibold mb-2"
           htmlFor="studentSchool"
         >
           Trường đang theo học
@@ -179,7 +179,7 @@ function StudentInfoForm({ studentData, password, setPassword }) {
 
       <div className="mb-4">
         <label
-          className="block text-gray-700 text-base font-bold mb-2"
+          className="block text-gray-700 text-base font-semibold mb-2"
           htmlFor="studentSpecialized"
         >
           Chuyên nghành theo học:
@@ -196,7 +196,7 @@ function StudentInfoForm({ studentData, password, setPassword }) {
 
       <div className="mb-4">
         <label
-          className="block text-gray-700 text-base font-bold mb-2"
+          className="block text-gray-700 text-base font-semibold mb-2"
           htmlFor="numberYearOfStudy"
         >
           Số năm học:
@@ -213,7 +213,7 @@ function StudentInfoForm({ studentData, password, setPassword }) {
 
       <div className="mb-4">
         <label
-          className="block text-gray-700 text-base font-bold mb-2"
+          className="block text-gray-700 text-base font-semibold mb-2"
           htmlFor="studentConstraction"
         >
           Mã hợp đồng
@@ -231,8 +231,42 @@ function StudentInfoForm({ studentData, password, setPassword }) {
         Thông tin người giới thiệu
       </h2>
 
+      <div className="mb-4">
+        <label
+          className="block text-gray-700 text-base font-semibold mb-2"
+          htmlFor="referrer"
+        >
+          Tên người giới thiệu
+        </label>
+        <input
+          className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="referrer"
+          type="text"
+          name="referrer"
+          value={referrerData?.username}
+          readOnly
+        />
+      </div>
+
+      <div className="mb-4">
+        <label
+          className="block text-gray-700 text-base font-semibold mb-2"
+          htmlFor="referrerPhone"
+        >
+          Số điện thoại liên hệ
+        </label>
+        <input
+          className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="referrerPhone"
+          type="text"
+          name="referrerPhone"
+          value={referrerData?.phoneCompany}
+          readOnly
+        />
+      </div>
+
       {/* <div className="mb-4">
-				<label className="block text-gray-700 text-base font-bold mb-2" htmlFor="studentRecommendation">
+				<label className="block text-gray-700 text-base font-semibold font-bold mb-2" htmlFor="studentRecommendation">
 					Mã giới thiệu
 				</label>
 				<input

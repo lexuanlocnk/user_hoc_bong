@@ -27,7 +27,7 @@ const implementationProgress = [
   },
   {
     step: 3,
-    content: "Ký hợp đồng",
+    content: "Ký biên bản cam kết",
   },
   {
     step: 4,
@@ -175,7 +175,7 @@ function AboutUs() {
                   </div>
                   <div className="flex flex-col  items-center md:text-lg">
                     <p className="md:text-2xl mb-2 font-semibold">
-                      {formatCurrency(Number(statisticalData?.totalFund))}
+                      {formatCurrency(Number(statisticalData?.totalMember))}
                     </p>
                     <p>Tổng quỹ xác thực</p>
                   </div>
@@ -220,7 +220,7 @@ function AboutUs() {
                   </div>
                   <div className="flex flex-col  items-center md:text-lg">
                     <p className="md:text-2xl mb-2 font-semibold">
-                      {formatCurrency(Number(statisticalData?.totalPaid))}
+                      {formatCurrency(Number(statisticalData?.totalMoneyPaid))}
                     </p>
                     <p>Số tiền đã trao</p>
                   </div>

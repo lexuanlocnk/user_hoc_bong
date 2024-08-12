@@ -12,47 +12,47 @@ function ModalDetailJob({
   fetchDataJob,
   fetchListPostJob,
 }) {
-  const handleDeletePost = async (idPost) => {
-    try {
-      let headers = {
-        "Content-Type": "application/json",
-      };
-      const token = localStorage.getItem("studentvtnk");
+  // const handleDeletePost = async (idPost) => {
+  //   try {
+  //     let headers = {
+  //       "Content-Type": "application/json",
+  //     };
+  //     const token = localStorage.getItem("studentvtnk");
 
-      if (token) {
-        headers.Authorization = `Bearer ${token}`;
-      }
-      const res = await axios.get(
-        config.host + `/delete-link/${idPost}`,
+  //     if (token) {
+  //       headers.Authorization = `Bearer ${token}`;
+  //     }
+  //     const res = await axios.get(
+  //       config.host + `/delete-link/${idPost}`,
 
-        { headers: headers }
-      );
-      if (res.data.status === true) {
-        fetchListPostJob(open.idTask);
-        fetchDataJob();
-        toast.success(`Xóa bài viết thành công.`, {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-    } catch (error) {
-      console.error("fetch data to fail.");
-      toast.error(`Xóa bài viết thất bại.`, {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-  };
+  //       { headers: headers }
+  //     );
+  //     if (res.data.status === true) {
+  //       fetchListPostJob(open.idTask);
+  //       fetchDataJob();
+  //       toast.success(`Xóa bài viết thành công.`, {
+  //         position: "top-right",
+  //         autoClose: 2000,
+  //         hideProgressBar: false,
+  //         closeOnClick: true,
+  //         pauseOnHover: true,
+  //         draggable: true,
+  //         progress: undefined,
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.error("fetch data to fail.");
+  //     toast.error(`Xóa bài viết thất bại.`, {
+  //       position: "top-right",
+  //       autoClose: 2000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //     });
+  //   }
+  // };
 
   const columns = [
     {
@@ -74,26 +74,26 @@ function ModalDetailJob({
         );
       },
     },
-    {
-      title: "#",
-      dataIndex: "action",
-      key: "action",
-      width: 160,
+    // {
+    //   title: "#",
+    //   dataIndex: "action",
+    //   key: "action",
+    //   width: 160,
 
-      render: (text, record) => {
-        return (
-          <Popconfirm
-            okType={"danger"}
-            title="Xóa bài viết"
-            onConfirm={() => handleDeletePost(record.id)}
-            okText="Chắc chắn"
-            cancelText="Hủy"
-          >
-            <span className="btn_delete_post">Xóa bài viết</span>
-          </Popconfirm>
-        );
-      },
-    },
+    //   render: (text, record) => {
+    //     return (
+    //       <Popconfirm
+    //         okType={"danger"}
+    //         title="Xóa bài viết"
+    //         onConfirm={() => handleDeletePost(record.id)}
+    //         okText="Chắc chắn"
+    //         cancelText="Hủy"
+    //       >
+    //         <span className="btn_delete_post">Xóa bài viết</span>
+    //       </Popconfirm>
+    //     );
+    //   },
+    // },
   ];
 
   return (

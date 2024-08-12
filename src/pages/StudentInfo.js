@@ -9,13 +9,15 @@ import config from "../config";
 import { ToastContainer, toast } from "react-toastify";
 import { LiaFileContractSolid } from "react-icons/lia";
 import TableJobs from "./tableJobs";
+import dayjs from "dayjs";
 
 function StudentInfo() {
   const [studentData, setStudentData] = useState({});
+  const [referrerData, setReferrerData] = useState({});
   const [personForm, setPersonForm] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [studentLoanData, setStudentLoanData] = useState([]);
-  const [password, setPassword] = useState();
+  const [password, setPassword] = useState("");
   const [contractData, setContractData] = useState();
 
   const currencyFormat = (num) => {
@@ -41,10 +43,11 @@ function StudentInfo() {
         headers: headers,
       });
       setStudentData(res.data.student);
+      setReferrerData(res.data.member);
       setContractData(res.data.dataContract);
-      setPassword(res.data.student.password);
+      // setPassword(res.data.student.password);
       setPersonForm(res.data.student.dependent_person);
-      setStudentLoanData(res.data.list);
+      setStudentLoanData(res.data.list.reverse());
       setIsLoading(false);
     } catch (error) {
       console.error("fetch data fail.");
@@ -57,6 +60,18 @@ function StudentInfo() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!password) {
+      toast.warning(`Vui lòng nhập mật khẩu!`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
     try {
       let headers = {
         "Content-Type": "application/json",
@@ -87,7 +102,7 @@ function StudentInfo() {
       }
     } catch (error) {
       console.error("fetch data to fail.");
-      toast.warning(`Cập nhật mật khẩu thất bại. Xin vui lòng thử lại.`, {
+      toast.warning(`Cập nhật mật khẩu thất bại. Vui lòng thử lại!`, {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -109,8 +124,8 @@ function StudentInfo() {
               <div className="w-10 h-10 border-[5px] rounded-full border-primary border-t-transparent animate-spin "></div>
             </div>
           )}
-          <h1 className="text-center mt-20 md:mt-10 text-2xl md:text-3xl uppercase font-semibold">
-            Thông tin sinh viên nhận học bổng
+          <h1 className="text-center mt-20 md:mt-10 text-2xl md:text-3xl font-semibold">
+            Thông tin người nhận học bổng
           </h1>
           {!isLoading && (
             <>
@@ -119,18 +134,20 @@ function StudentInfo() {
                 className="md:max-w-[800px] mx-auto pt-[32px] px-4"
               >
                 <h2 className="mt-6 mb-4 text-lg font-semibold">
-                  Thông tin sinh viên
+                  Thông tin cha mẹ hoặc người giám hộ
                 </h2>
-                {personForm === 1 ? (
+                {personForm == "1" ? (
                   <ParentForm studentData={studentData} />
                 ) : (
                   <GuardianForm studentData={studentData} />
                 )}
+
                 <h2 className="mt-6 mb-4 text-lg font-semibold">
                   Thông tin sinh viên
                 </h2>
                 <StudentInfoForm
                   studentData={studentData}
+                  referrerData={referrerData}
                   password={password}
                   setPassword={setPassword}
                 />
@@ -138,8 +155,7 @@ function StudentInfo() {
 
               <div className="px-5">
                 <h2 className="mt-6 mb-4 text-lg font-semibold">
-                  Danh sách hợp đồng đã ký (*nhấn vào link bên dưới để xem chi
-                  tiết bản scan hợp đồng)
+                  Hồ sơ xét duyệt học bổng
                 </h2>
                 <ul>
                   {contractData?.length > 0 ? (
@@ -174,11 +190,12 @@ function StudentInfo() {
                     <thead className="bg-gray-600 text-white border border-gray-600">
                       <tr>
                         <th className="py-2 px-4 border-b">STT</th>
-                        <th className="py-2 px-4 border-b">Mã phiếu thu</th>
+                        <th className="py-2 px-4 border-b">Mã phiếu nhận</th>
                         <th className="py-2 px-4 border-b">Số tiền đã nhận</th>
+                        <th className="py-2 px-4 border-b">Ngày thực nhận</th>
                         <th className="py-2 px-4 border-b">Ngày tạo phiếu</th>
                         <th className="py-2 px-4 border-b">
-                          Bản scan PDF phiếu thu
+                          Bản scan PDF phiếu nhận
                         </th>
                       </tr>
                     </thead>
@@ -197,6 +214,12 @@ function StudentInfo() {
 
                             <td className="py-2 px-4 border-b text-center">
                               {currencyFormat(row.moneyPaid)}
+                            </td>
+
+                            <td className="py-2 px-4 border-b text-center">
+                              {dayjs
+                                .unix(parseInt(row?.datesReceived))
+                                .format("DD-MM-YYYY")}
                             </td>
 
                             <td className="py-2 px-4 border-b text-center">

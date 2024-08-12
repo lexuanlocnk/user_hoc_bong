@@ -60,40 +60,40 @@ function ScholarshipRegister() {
   };
 
   const parentFormValidation = {
-    // cha
-    cha_fullName: Yup.string().required("*Họ và tên là bắt buộc"),
-    cha_dob: Yup.date().required("*Ngày tháng năm sinh là bắt buộc"),
-    cha_address: Yup.string().required("*Địa chỉ là bắt buộc"),
-    cha_tel: Yup.string()
-      .matches(/^[0-9]+$/, "*Số điện thoại chỉ được chứa các chữ số")
-      .min(10, "*Số điện thoại phải có ít nhất 10 số")
-      .max(11, "*Số điện thoại không được vượt quá 11 số")
-      .required("*Số điện thoại là bắt buộc"),
-    cha_idCard: Yup.string()
-      .matches(/^[0-9]+$/, "*Số CCCD/CMDN chỉ được chứa các chữ số")
-      .min(9, "*Số CCCD/CMDN phải có ít nhất 9 số")
-      .max(12, "*Số CCCD/CMDN không được vượt quá 12 số")
-      .required("*Số CCCD/CMDN là bắt buộc"),
-    cha_email: Yup.string()
-      .email("*Email không hợp lệ")
-      .required("*Email là bắt buộc"),
-    // me
-    me_fullName: Yup.string().required("*Họ và tên là bắt buộc"),
-    me_dob: Yup.date().required("*Ngày tháng năm sinh là bắt buộc"),
-    me_address: Yup.string().required("*Địa chỉ là bắt buộc"),
-    me_tel: Yup.string()
-      .matches(/^[0-9]+$/, "*Số điện thoại chỉ được chứa các chữ số")
-      .min(10, "*Số điện thoại phải có ít nhất 10 số")
-      .max(11, "*Số điện thoại không được vượt quá 11 số")
-      .required("*Số điện thoại là bắt buộc"),
-    me_idCard: Yup.string()
-      .matches(/^[0-9]+$/, "*Số CCCD/CMDN chỉ được chứa các chữ số")
-      .min(9, "*Số CCCD/CMDN phải có ít nhất 9 số")
-      .max(12, "*Số CCCD/CMDN không được vượt quá 12 số")
-      .required("*Số CCCD/CMDN là bắt buộc"),
-    me_email: Yup.string()
-      .email("*Email không hợp lệ")
-      .required("*Email là bắt buộc"),
+    // // cha
+    // cha_fullName: Yup.string().required("*Họ và tên là bắt buộc"),
+    // cha_dob: Yup.date().required("*Ngày tháng năm sinh là bắt buộc"),
+    // cha_address: Yup.string().required("*Địa chỉ là bắt buộc"),
+    // cha_tel: Yup.string()
+    //   .matches(/^[0-9]+$/, "*Số điện thoại chỉ được chứa các chữ số")
+    //   .min(10, "*Số điện thoại phải có ít nhất 10 số")
+    //   .max(11, "*Số điện thoại không được vượt quá 11 số")
+    //   .required("*Số điện thoại là bắt buộc"),
+    // cha_idCard: Yup.string()
+    //   .matches(/^[0-9]+$/, "*Số CCCD/CMDN chỉ được chứa các chữ số")
+    //   .min(9, "*Số CCCD/CMDN phải có ít nhất 9 số")
+    //   .max(12, "*Số CCCD/CMDN không được vượt quá 12 số")
+    //   .required("*Số CCCD/CMDN là bắt buộc"),
+    // cha_email: Yup.string()
+    //   .email("*Email không hợp lệ")
+    //   .required("*Email là bắt buộc"),
+    // // me
+    // me_fullName: Yup.string().required("*Họ và tên là bắt buộc"),
+    // me_dob: Yup.date().required("*Ngày tháng năm sinh là bắt buộc"),
+    // me_address: Yup.string().required("*Địa chỉ là bắt buộc"),
+    // me_tel: Yup.string()
+    //   .matches(/^[0-9]+$/, "*Số điện thoại chỉ được chứa các chữ số")
+    //   .min(10, "*Số điện thoại phải có ít nhất 10 số")
+    //   .max(11, "*Số điện thoại không được vượt quá 11 số")
+    //   .required("*Số điện thoại là bắt buộc"),
+    // me_idCard: Yup.string()
+    //   .matches(/^[0-9]+$/, "*Số CCCD/CMDN chỉ được chứa các chữ số")
+    //   .min(9, "*Số CCCD/CMDN phải có ít nhất 9 số")
+    //   .max(12, "*Số CCCD/CMDN không được vượt quá 12 số")
+    //   .required("*Số CCCD/CMDN là bắt buộc"),
+    // me_email: Yup.string()
+    //   .email("*Email không hợp lệ")
+    //   .required("*Email là bắt buộc"),
     //sv
     // username: Yup.string().required("*Tên đăng nhập là bắt buộc"),
     password: Yup.string().required("*Mật khẩu là bắt buộc"),
